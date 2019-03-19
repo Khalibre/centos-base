@@ -13,9 +13,6 @@ variables:
   imageName: 'khalibre/centos-base:latest'
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
-
 - task: Docker@1
   displayName: Container registry login
   inputs:
@@ -29,12 +26,12 @@ steps:
     dockerFile: Dockerfile
     imageName: $(Build.Repository.Name)
     includeLatestTag: true
-- task: Docker@1
-  displayName: Tag image
-  inputs:
-    command: tag
-    imageName: $(Build.Repository.Name):latest
-    arguments: khalibre/$(Build.Repository.Name):latest
+# - task: Docker@1
+#   displayName: Tag image
+#   inputs:
+#     command: tag
+#     imageName: $(Build.Repository.Name):latest
+#     arguments: khalibre/$(Build.Repository.Name):latest
 - task: Docker@1
   displayName: Push image
   inputs:
