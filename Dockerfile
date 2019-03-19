@@ -1,7 +1,7 @@
 FROM centos:7
 LABEL maintainer="Sida Say <sida.say@khalibre.com>"
 
-# Install packages necessary to run EAP
+# Install packages necessary to run the app
 RUN yum update -y && yum -y install unzip && yum clean all
 
 # Create a user and group used to launch processes
